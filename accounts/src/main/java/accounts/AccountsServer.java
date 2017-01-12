@@ -12,7 +12,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableEurekaClient
 public class AccountsServer {
-
 	/**
 	 * Run the application using Spring Boot and an embedded servlet engine.
 	 * 

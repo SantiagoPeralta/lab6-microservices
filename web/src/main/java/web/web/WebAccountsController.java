@@ -29,8 +29,7 @@ public class WebAccountsController {
 
 	private final WebAccountsService accountsService;
 
-	private Logger logger = Logger.getLogger(WebAccountsController.class
-			.getName());
+	private Logger logger = Logger.getLogger(WebAccountsController.class.getName());
 
 	@Autowired
 	public WebAccountsController(WebAccountsService accountsService) {
@@ -48,8 +47,7 @@ public class WebAccountsController {
 	}
 
 	@RequestMapping("/accounts/{accountNumber}")
-	public String byNumber(Model model,
-			@PathVariable("accountNumber") String accountNumber) {
+	public String byNumber(Model model, @PathVariable("accountNumber") String accountNumber) {
 
 		logger.info("web-service byNumber() invoked: " + accountNumber);
 
@@ -78,8 +76,7 @@ public class WebAccountsController {
 	}
 
 	@RequestMapping(value = "/accounts/dosearch")
-	public String doSearch(Model model, SearchCriteria criteria,
-			BindingResult result) {
+	public String doSearch(Model model, SearchCriteria criteria, BindingResult result) {
 		logger.info("web-service search() invoked: " + criteria);
 
 		criteria.validate(result);

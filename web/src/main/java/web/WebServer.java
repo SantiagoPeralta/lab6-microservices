@@ -24,5 +24,4 @@ public class WebServer {
 		SpringApplication.run(WebServer.class, args);
 	}
 
-
 }

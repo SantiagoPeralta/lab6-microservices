@@ -21,13 +21,11 @@ public class WebAccountsService {
 
 	private String serviceUrl;
 
-	private Logger logger = Logger.getLogger(WebAccountsService.class
-			.getName());
+	private Logger logger = Logger.getLogger(WebAccountsService.class.getName());
 
 	@Autowired
 	public WebAccountsService(String serviceUrl, RestTemplate restTemplate) {
-		this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl
-				: "http://" + serviceUrl;
+		this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl : "http://" + serviceUrl;
 		this.restTemplate = restTemplate;
 	}
 
@@ -40,15 +38,13 @@ public class WebAccountsService {
 	public void demoOnly() {
 		// Can't do this in the constructor because the RestTemplate injection
 		// happens afterwards.
-		logger.warning("The RestTemplate request factory is "
-				+ restTemplate.getRequestFactory());
+		logger.warning("The RestTemplate request factory is " + restTemplate.getRequestFactory());
 	}
 
 	public Account findByNumber(String accountNumber) {
 
 		logger.info("findByNumber() invoked: for " + accountNumber);
-		return restTemplate.getForObject(serviceUrl + "/accounts/{number}",
-				Account.class, accountNumber);
+		return restTemplate.getForObject(serviceUrl + "/accounts/{number}", Account.class, accountNumber);
 	}
 
 	public List<Account> byOwnerContains(String name) {
@@ -56,8 +52,7 @@ public class WebAccountsService {
 		Account[] accounts = null;
 
 		try {
-			accounts = restTemplate.getForObject(serviceUrl
-					+ "/accounts/owner/{name}", Account[].class, name);
+			accounts = restTemplate.getForObject(serviceUrl + "/accounts/owner/{name}", Account[].class, name);
 		} catch (HttpClientErrorException e) { // 404
 			// Nothing found
 		}
